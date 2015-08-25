@@ -2,5 +2,15 @@
     <string name="app_name">AndroidTraningTeam</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="drawer_open">Menu opened</string>
+    <string name="drawer_close">Menu closed</string>
     <string name="action_settings">Settings</string>
+
+    <string name="weather">Weather</string>
+    <string name="notification">Notification</string>
+    <string name="notes">Notes</string>
+    <string name="settings">Settings</string>
+    <string name="about">About</string>
+    <string name="framgia">FRAMGIA</string>
+    <string name="sologan_framgia">From Asia To The World</string>
 </resources>

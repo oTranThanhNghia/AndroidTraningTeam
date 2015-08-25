@@ -1,23 +1,33 @@
 package com.framgiatranthanhnghia.androidtrainingteam.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.framgiatranthanhnghia.androidtrainingteam.R;
+import com.framgiatranthanhnghia.androidtrainingteam.fragments.NavigationDrawerCallbacks;
+import com.framgiatranthanhnghia.androidtrainingteam.fragments.NavigationDrawerFragment;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+public class MainActivity extends BaseActivity implements NavigationDrawerCallbacks {
 
-public class MainActivity extends AppCompatActivity {
+    private Toolbar mToolbar;
+    private NavigationDrawerFragment mNavigationDrawerFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
+        mToolbar=(Toolbar)findViewById(R.id.toolbar_actionbar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        mNavigationDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_drawer);
+        mNavigationDrawerFragment.setup(R.id.fragment_drawer, (DrawerLayout) findViewById(R.id.drawer), mToolbar);
     }
 
     @Override
@@ -43,4 +53,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onNavigationDrawerItemSelected(int position) {
+        Toast.makeText(this, "Menu item selected -> " + position, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mNavigationDrawerFragment.isDrawerOpen()) {
+            mNavigationDrawerFragment.closeDrawer();
+        }
+        else {
+            super.onBackPressed();
+        }
+    }
 }
