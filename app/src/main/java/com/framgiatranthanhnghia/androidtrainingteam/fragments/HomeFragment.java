@@ -22,7 +22,7 @@ import java.util.List;
  */
 public class HomeFragment extends BaseFragment<MainActivity> {
 
-    private final String TAG="HomeFragment";
+    private final String TAG = "HomeFragment";
 
     private View mRootView;
     private PagerSlidingTabStrip mTabs;
@@ -52,7 +52,6 @@ public class HomeFragment extends BaseFragment<MainActivity> {
 
         mPager.setAdapter(mPagerAdapter);
         mTabs.setViewPager(mPager);
-
 
         return mRootView;
     }

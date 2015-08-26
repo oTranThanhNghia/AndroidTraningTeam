@@ -8,4 +8,7 @@ public class Config {
      * More here : https://openweathermap.org/api
      * */
     public static final String APPID_WEATHER="5eab05940737f53a3063c368eea9a069";
+
+    public static double mLat=0;
+    public static double mLon=0;
 }
