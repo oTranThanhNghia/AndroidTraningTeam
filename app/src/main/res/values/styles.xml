@@ -10,6 +10,10 @@
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
 
         <item name="android:windowBackground">@color/myWindowBackground</item>
+
+        <!--Customize your ui control-->
+        <item name="android:textViewStyle">@style/CusTextView</item>
+        <item name="android:buttonStyle">@style/CusButton</item>
     </style>
 
     <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">

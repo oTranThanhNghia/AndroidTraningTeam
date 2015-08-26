@@ -10,4 +10,7 @@
 
     <color name="selected_gray">#ffdbdbdb</color>
 
+    <!--TextView-->
+    <color name="textColor">#000</color>
+
 </resources>

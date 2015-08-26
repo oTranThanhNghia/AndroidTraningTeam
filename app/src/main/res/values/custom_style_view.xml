@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CusTextView" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/textColor</item>
+    </style>
+
+    <style name="CusButton" parent="android:Widget.Button">
+
+    </style>
+</resources>

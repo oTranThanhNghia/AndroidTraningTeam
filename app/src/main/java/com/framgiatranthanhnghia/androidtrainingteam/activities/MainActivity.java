@@ -8,8 +8,11 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.framgiatranthanhnghia.androidtrainingteam.R;
+import com.framgiatranthanhnghia.androidtrainingteam.fragments.HomeFragment;
 import com.framgiatranthanhnghia.androidtrainingteam.fragments.NavigationDrawerCallbacks;
 import com.framgiatranthanhnghia.androidtrainingteam.fragments.NavigationDrawerFragment;
+import com.framgiatranthanhnghia.androidtrainingteam.fragments.NotesFragment;
+import com.framgiatranthanhnghia.androidtrainingteam.fragments.NotificationFragment;
 
 public class MainActivity extends BaseActivity implements NavigationDrawerCallbacks {
 
@@ -28,6 +31,8 @@ public class MainActivity extends BaseActivity implements NavigationDrawerCallba
 
         mNavigationDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_drawer);
         mNavigationDrawerFragment.setup(R.id.fragment_drawer, (DrawerLayout) findViewById(R.id.drawer), mToolbar);
+
+
     }
 
     @Override
@@ -45,9 +50,9 @@ public class MainActivity extends BaseActivity implements NavigationDrawerCallba
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -56,6 +61,17 @@ public class MainActivity extends BaseActivity implements NavigationDrawerCallba
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         Toast.makeText(this, "Menu item selected -> " + position, Toast.LENGTH_SHORT).show();
+        switch (position){
+            case 1:
+                startFragment(NotificationFragment.class,null);
+                break;
+            case 2:
+                startFragment(NotesFragment.class,null);
+                break;
+            default:
+                startFragment(HomeFragment.class,null);
+                break;
+        }
     }
 
     @Override
@@ -63,7 +79,10 @@ public class MainActivity extends BaseActivity implements NavigationDrawerCallba
         if (mNavigationDrawerFragment.isDrawerOpen()) {
             mNavigationDrawerFragment.closeDrawer();
         }
-        else {
+        else if(getSupportFragmentManager().getBackStackEntryCount()==1)
+        {
+            this.finish();
+        }else{
             super.onBackPressed();
         }
     }

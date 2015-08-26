@@ -13,4 +13,13 @@
     <string name="about">About</string>
     <string name="framgia">FRAMGIA</string>
     <string name="sologan_framgia">From Asia To The World</string>
+    
+    <string name="try_again">Try again</string>
+    <string name="no_result">No result</string>
+    <string name="connection_lost">Connection lost</string>
+    <string name="loading">Loading</string>
+    <string name="message">Message</string>
+    
+    <string name="today">Today</string>
+    <string name="forecast">Forecast</string>
 </resources>
