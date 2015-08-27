@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="CusTextView" parent="android:Widget.TextView">
-        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:drawablePadding">@dimen/tiny_margin</item>
     </style>
 
     <style name="CusButton" parent="android:Widget.Button">
+
+    </style>
+
+    <style name="TextDate" parent="CusTextView">
+        <item name="android:textSize">@dimen/text_size_date</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:maxLines">1</item>
+
+    </style>
+    <style name="TxtDetailWeather" parent="CusTextView">
+        <item name="android:layout_marginTop">@dimen/small_margin</item>
+        <item name="android:layout_marginBottom">@dimen/small_margin</item>
+        <item name="android:maxLines">2</item>
+    </style>
+    <style name="TxtItemWeather" parent="CusTextView">
 
     </style>
 </resources>

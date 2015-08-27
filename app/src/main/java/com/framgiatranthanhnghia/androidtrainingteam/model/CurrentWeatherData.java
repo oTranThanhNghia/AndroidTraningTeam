@@ -1,5 +1,7 @@
 package com.framgiatranthanhnghia.androidtrainingteam.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 /**
@@ -8,5 +10,6 @@ import java.util.List;
 public class CurrentWeatherData {
     public List<WeatherData> weather;
     public MainWeatherData main;
+    public Wind wind;
     public SystemData sys;
 }

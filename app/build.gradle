@@ -26,4 +26,5 @@ dependencies {
     compile 'com.google.code.gson:gson:2.2.4'
     compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
     compile project(':volley')
+    compile files('libs/universal-image-loader-1.9.4.jar')
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="48dp">
+    android:layout_height="56dp">
 
     <TextView
         android:id="@+id/item_name"
@@ -15,5 +15,5 @@
         android:drawablePadding="16dp"
         android:gravity="center_vertical"
         android:textColor="#000000"
-        android:textSize="14sp" />
+        android:textSize="@dimen/text_drawer" />
 </LinearLayout>

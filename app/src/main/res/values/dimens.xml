@@ -4,4 +4,13 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="navigation_drawer_width">240dp</dimen>
     <dimen name="toolbar_elevation">4dp</dimen>
+
+    <dimen name="text_size_date">20sp</dimen>
+    <dimen name="text_drawer">18sp</dimen>
+    <dimen name="text_size_day_of_week">18sp</dimen>
+    <dimen name="text_size_item_temp">18sp</dimen>
+
+    <dimen name="tiny_margin">4dp</dimen>
+    <dimen name="small_margin">8dp</dimen>
+    <dimen name="medium_margin">16dp</dimen>
 </resources>

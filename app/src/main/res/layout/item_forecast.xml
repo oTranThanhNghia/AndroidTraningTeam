@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/medium_margin">
+
+    <TextView
+        android:id="@+id/txt_day_of_week"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:text="MONDAY"
+        android:textSize="@dimen/text_size_day_of_week"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txt_short_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txt_day_of_week"
+        android:layout_below="@+id/txt_day_of_week"
+        android:text="NOVEMBER 26" />
+
+    <ImageView
+        android:id="@+id/img_weather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/center_item"
+        android:src="@drawable/test_10d" />
+
+    <View
+        android:id="@+id/center_item"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="@dimen/small_margin"
+        android:layout_marginRight="@dimen/small_margin" />
+
+    <TextView
+        android:id="@+id/txt_temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/center_item"
+        android:text="24/30℃"
+        android:textSize="@dimen/text_size_item_temp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txt_humidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/medium_margin"
+        android:layout_toRightOf="@id/txt_temp"
+
+        android:drawableLeft="@drawable/ic_humidity_32x32"
+        android:text="80%"
+        android:textSize="14sp"
+        android:textColor="@color/myPrimaryColor" />
+</RelativeLayout>

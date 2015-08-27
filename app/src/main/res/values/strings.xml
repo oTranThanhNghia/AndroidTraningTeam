@@ -22,4 +22,8 @@
     
     <string name="today">Today</string>
     <string name="forecast">Forecast</string>
+
+    <string name="celsius">℃</string>
+    <string name="miles_per_seccond">m/s</string>
+    <string name="percent">%</string>
 </resources>
