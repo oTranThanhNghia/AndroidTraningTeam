@@ -9,7 +9,10 @@
     <style name="CusButton" parent="android:Widget.Button">
 
     </style>
-
+    <style name="CusEditText" parent="android:Widget.EditText">
+        <item name="android:textColor">@color/myPrimaryColor</item>
+        <item name="android:textColorHint">@color/tab_color</item>
+    </style>
     <style name="TextDate" parent="CusTextView">
         <item name="android:textSize">@dimen/text_size_date</item>
         <item name="android:textStyle">bold</item>

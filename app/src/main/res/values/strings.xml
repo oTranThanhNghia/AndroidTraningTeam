@@ -26,4 +26,7 @@
     <string name="celsius">℃</string>
     <string name="miles_per_seccond">m/s</string>
     <string name="percent">%</string>
+    <string name="copyright">Copyright © Framgia</string>
+    <string name="title">Title</string>
+    <string name="content">Content</string>
 </resources>
