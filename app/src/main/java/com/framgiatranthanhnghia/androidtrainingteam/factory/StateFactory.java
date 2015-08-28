@@ -18,27 +18,53 @@ public class StateFactory {
     public static final int NO_RESULT_STATE_LAYOUT=2;
 
     private RelativeLayout mRootLayout;
+    private BaseStateLayout mCurrentState=null;
+
     public StateFactory(RelativeLayout rootLayout){
         mRootLayout=rootLayout;
     }
 
     public BaseStateLayout getStateLayout(int typeState,Activity activity) {
+
+        BaseStateLayout baseStateLayout=null;
         try {
             switch (typeState) {
                 case ERROR_STATE_LAYOUT:
-                    return new ErrorStateLayout(activity, mRootLayout);
+                    baseStateLayout= new ErrorStateLayout(activity, mRootLayout);
+                    break;
                 case LOADING_STATE_LAYOUT:
-                    return new LoadingStateLayout(activity, R.layout.layout_loading, mRootLayout);
+                    baseStateLayout= new LoadingStateLayout(activity, R.layout.layout_loading, mRootLayout);
+                    break;
                 case NO_RESULT_STATE_LAYOUT:
-                    return new NoResultStateLayout(activity, R.layout.layout_no_result,mRootLayout);
+                    baseStateLayout =new NoResultStateLayout(activity, R.layout.layout_no_result,mRootLayout);
+                    break;
                 default:
-                    return null;
+                    break;
             }
+            return mCurrentState=baseStateLayout;
         }
         catch (Exception e){
             e.printStackTrace();
-            return null;
+            return mCurrentState=null;
         }
 
+    }
+
+    public void showStateLayout(){
+        if(mCurrentState!=null){
+            mCurrentState.showStateLayout();
+        }
+    }
+
+    public void releaseContentViews(){
+        if(mCurrentState!=null){
+            mCurrentState.releaseContentViews();
+        }
+    }
+
+    public void hiddenStateLayout(){
+        if(mCurrentState!=null){
+            mCurrentState.hiddenStateLayout();
+        }
     }
 }

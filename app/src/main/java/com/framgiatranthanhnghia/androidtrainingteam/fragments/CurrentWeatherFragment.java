@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.Response;
@@ -16,6 +17,9 @@ import com.framgiatranthanhnghia.androidtrainingteam.R;
 import com.framgiatranthanhnghia.androidtrainingteam.activities.MainActivity;
 import com.framgiatranthanhnghia.androidtrainingteam.api.LocationAPI;
 import com.framgiatranthanhnghia.androidtrainingteam.api.WeatherAPI;
+import com.framgiatranthanhnghia.androidtrainingteam.factory.StateFactory;
+import com.framgiatranthanhnghia.androidtrainingteam.factory.statelayout.ErrorStateLayout;
+import com.framgiatranthanhnghia.androidtrainingteam.factory.statelayout.LoadingStateLayout;
 import com.framgiatranthanhnghia.androidtrainingteam.model.CurrentWeatherData;
 import com.framgiatranthanhnghia.androidtrainingteam.model.Geolocation;
 import com.framgiatranthanhnghia.androidtrainingteam.model.WeatherData;
@@ -51,6 +55,8 @@ public class CurrentWeatherFragment extends BaseFragment<MainActivity> {
 
     private ImageView mImgWeather;
 
+    private StateFactory mStateFactory;
+
 
     private void init() {
         mTxtDateToday = (TextView) mRootView.findViewById(R.id.txt_date_today);
@@ -64,6 +70,8 @@ public class CurrentWeatherFragment extends BaseFragment<MainActivity> {
         mTxtLowTemp = (TextView) mRootView.findViewById(R.id.txt_low_temp);
 
         mImgWeather = (ImageView) mRootView.findViewById(R.id.img_weather);
+
+        mStateFactory=new StateFactory((RelativeLayout)mRootView.findViewById(R.id.state_layout));
     }
 
     @Nullable
@@ -98,8 +106,14 @@ public class CurrentWeatherFragment extends BaseFragment<MainActivity> {
 
     }
 
+
+
     public void getGeolocation() {
         String url = LocationAPI.URL;
+        LoadingStateLayout loadingStateLayout=(LoadingStateLayout)mStateFactory.getStateLayout(StateFactory.LOADING_STATE_LAYOUT,getMainActivity());
+        if(loadingStateLayout!=null){
+            loadingStateLayout.showStateLayout();
+        }
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -121,13 +135,28 @@ public class CurrentWeatherFragment extends BaseFragment<MainActivity> {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e(TAG, error.toString());
+                ErrorStateLayout errorStateLayout=(ErrorStateLayout)mStateFactory.getStateLayout(StateFactory.ERROR_STATE_LAYOUT,getMainActivity());
+                if(errorStateLayout!=null){
+                    errorStateLayout.setReloadClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            getGeolocation();
+                        }
+                    });
+                    errorStateLayout.showStateLayout();
+                }
             }
         });
         VolleyRequestQueue.getInstance(getActivity()).addToRequestQueue(jsonObjectRequest);
     }
 
+
     public void getCurrentWeather() {
         String url = WeatherAPI.getWeatherDataByGeo(Config.mLat, Config.mLon);
+        LoadingStateLayout loadingStateLayout=(LoadingStateLayout)mStateFactory.getStateLayout(StateFactory.LOADING_STATE_LAYOUT,getMainActivity());
+        if(loadingStateLayout!=null){
+            loadingStateLayout.showStateLayout();
+        }
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -137,6 +166,9 @@ public class CurrentWeatherFragment extends BaseFragment<MainActivity> {
                     }.getType());
                     if(currentWeatherData!=null){
                         updateData(currentWeatherData);
+
+                        // remove state view
+                        mStateFactory.releaseContentViews();
                     }
                 } catch (Exception ex) {
                     ex.printStackTrace();
@@ -147,6 +179,16 @@ public class CurrentWeatherFragment extends BaseFragment<MainActivity> {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e(TAG, error.toString());
+                ErrorStateLayout errorStateLayout=(ErrorStateLayout)mStateFactory.getStateLayout(StateFactory.ERROR_STATE_LAYOUT,getMainActivity());
+                if(errorStateLayout!=null){
+                    errorStateLayout.setReloadClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            getCurrentWeather();
+                        }
+                    });
+                    errorStateLayout.showStateLayout();
+                }
             }
         });
         VolleyRequestQueue.getInstance(getActivity()).addToRequestQueue(jsonObjectRequest);

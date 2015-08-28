@@ -47,9 +47,11 @@ public abstract class BaseStateLayout {
     }
     public abstract void onCreate();
     public abstract void initListener();
+
     public void hiddenStateLayout(){
         mRootLayout.setVisibility(View.GONE);
     }
+
     public void releaseContentViews(){
         mActivity.runOnUiThread(new Runnable() {
             @Override
