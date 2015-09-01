@@ -70,7 +70,7 @@ public class CurrentWeatherFragment extends BaseFragment<MainActivity> {
         mTxtLowTemp = (TextView) mRootView.findViewById(R.id.txt_low_temp);
 
         mImgWeather = (ImageView) mRootView.findViewById(R.id.img_weather);
-
+        
         mStateFactory=new StateFactory((RelativeLayout)mRootView.findViewById(R.id.state_layout));
     }
 
